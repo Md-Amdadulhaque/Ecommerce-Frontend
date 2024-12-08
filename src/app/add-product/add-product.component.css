@@ -1,0 +1,65 @@
+/* Basic form container styling */
+form {
+  max-width: 400px;             /* Set a max-width for the form */
+  margin: 20px auto;            /* Center the form horizontally */
+  padding: 20px;                /* Add padding inside the form */
+  border: 1px solid #ccc;       /* Light gray border */
+  border-radius: 8px;           /* Rounded corners */
+  background-color: #f9f9f9;    /* Light background color */
+}
+
+/* Styling for form fields */
+label {
+  display: block;               /* Block-level label */
+  margin-bottom: 8px;           /* Space below the label */
+  font-weight: bold;            /* Make label text bold */
+}
+
+/* Styling for input fields */
+input[type="text"], input[type="email"] {
+  width: 100%;                  /* Full width for input fields */
+  padding: 10px;                /* Add padding inside input */
+  margin-bottom: 15px;          /* Space below each input field */
+  border: 1px solid #ddd;       /* Light border */
+  border-radius: 4px;           /* Rounded corners */
+  font-size: 14px;              /* Font size inside input */
+}
+
+/* Styling for error messages */
+div {
+  color: red;                   /* Red color for error messages */
+  font-size: 12px;              /* Smaller font size */
+}
+
+/* Submit button styling */
+button[type="submit"] {
+  padding: 10px 20px;           /* Padding around the button */
+  background-color: #4CAF50;    /* Green background */
+  color: white;                 /* White text */
+  border: none;                 /* No border */
+  border-radius: 4px;           /* Rounded corners */
+  cursor: pointer;              /* Cursor to indicate it's clickable */
+  font-size: 16px;              /* Button text size */
+  transition: background-color 0.3s ease; /* Smooth color transition on hover */
+}
+
+/* Button hover effect */
+button[type="submit"]:hover {
+  background-color: #45a049;    /* Darker green on hover */
+}
+
+/* Disable button when form is invalid */
+button[type="submit"]:disabled {
+  background-color: #d3d3d3;    /* Light gray when disabled */
+  cursor: not-allowed;          /* Disable cursor */
+}
+
+.listofcat{
+  padding: 0px,10px;           /* Padding around the button */
+  color: white;                 /* White text */
+  border: none;                 /* No border */
+  border-radius: 4px;           /* Rounded corners */
+  cursor: pointer;              /* Cursor to indicate it's clickable */
+  font-size: 16px;              /* Button text size */
+  transition: background-color 0.3s ease; 
+}

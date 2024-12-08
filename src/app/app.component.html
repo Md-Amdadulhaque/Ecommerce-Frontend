@@ -1,0 +1,17 @@
+
+
+<div class = "component-containerApp">
+  
+  <div class ="nav-containerApp">
+    <ul>
+      <li routerLinkActive="active"[routerLinkActiveOptions]="{exact:true}"><a [routerLink]="''">Home</a></li>
+      <li routerLinkActive="active"><a [routerLink]="'Category'">Categories</a></li>
+      <li routerLinkActive="active"><a [routerLink]="'Product'">Products</a></li>
+      <li routerLinkActive="active"><a [routerLink]="'AddProduct'">AddProduct</a></li>
+      <li routerLinkActive="active"><a [routerLink]="'AddCategory'">AddCategory</a></li>
+      <li><a [routerLink]="'Error'">Contact</a></li>
+    </ul>
+  </div>
+  <router-outlet></router-outlet>
+
+</div>
