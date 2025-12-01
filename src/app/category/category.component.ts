@@ -1,24 +1,24 @@
 import { Component } from '@angular/core';
-import { CategoryService } from '../category.service';
+import { CategoryService } from '../Services/CategoryService/category.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-category',
   standalone: true,
-  imports:[CommonModule],
+  imports: [CommonModule],
   templateUrl: './category.component.html',
   styleUrl: './category.component.css',
 })
 export class CategoryComponent {
-     title = "Category";
-     data:any[]=[];
+  title = "Category";
+  data: any[] = [];
 
-     constructor (private categoryService:CategoryService){
-      this.categoryService.ShowCategory(this.title).subscribe((response:any)=>{
-        this.data = response;     
-        });
-     }
-     show(){
-     
-    }
+  constructor(private categoryService: CategoryService) {
+    this.categoryService.ShowCategory(this.title).subscribe((response: any) => {
+      this.data = response;
+    });
+  }
+  show() {
+
+  }
 }
