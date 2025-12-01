@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { WebRequestProductService } from './HttpClientService/web-request-product.service';
+import { WebRequestProductService } from './web-request-product.service';
 
 describe('WebRequestService', () => {
   let service: WebRequestProductService;
