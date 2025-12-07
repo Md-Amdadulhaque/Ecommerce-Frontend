@@ -8,6 +8,7 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { ChatBoxComponent } from './chat-box/chat-box.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterComponent } from './register/register.component';
+import { CartComponent } from './cart/cart.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -19,5 +20,6 @@ export const routes: Routes = [
     { path: "ChatBox", component: ChatBoxComponent },
     { path: "Login-page", component: LoginPageComponent },
     {path: "Register", component: RegisterComponent},
+    {path: "Cart", component : CartComponent},
     { path: "**", component: ErrorComponent }
 ];

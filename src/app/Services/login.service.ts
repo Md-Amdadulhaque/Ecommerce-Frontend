@@ -12,15 +12,14 @@ export class LoginService {
 
   constructor(private http: HttpClient, private router: Router) { }
   login(credentials: { username: string; password: string }): Observable<any> {
-    return this.http.post(this.apiUrl, credentials, {
-    responseType: 'text' // Accept plain text
-  });
+    return this.http.post(this.apiUrl, credentials);
   }
-  loginAndRedirect(credentials: { username: string; password: string }):void{
+  loginAndRedirect(credentials: { username: string; password: string }): void {
     this.login(credentials).subscribe({
-      next: (token: any) => {
-        if (token) {
-          localStorage.setItem('authToken', token);
+      next: (response: any) => {
+        if (response.token) {
+          localStorage.setItem('authToken', response.token);
+          localStorage.setItem('userId', response.userId);
           this.router.navigate(['/Home']);
         } else {
           console.warn('Login failed: invalid credentials');
@@ -29,10 +28,10 @@ export class LoginService {
       },
       error: (err) => {
         console.error('Full error object:', err);
-  console.error('Error status:', err.status);
-  console.error('Error message:', err.message);
-  console.error('Error details:', err.error);
-          this.router.navigate(['/Error']);
+        console.error('Error status:', err.status);
+        console.error('Error message:', err.message);
+        console.error('Error details:', err.error);
+        this.router.navigate(['/Error']);
       }
     });
   }

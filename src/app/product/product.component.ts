@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { ProductService } from '../Services/ProductService/product.service';
 import { CommonModule } from '@angular/common';
-
+import { CartService } from '../Services/cart.service';
 
 export interface Product {
+  Id : string;
   Name: string;
   Description: string;
   Price: number;
@@ -23,7 +24,7 @@ export class ProductComponent {
   data: any[] = [];
   products: Product[] = [];
   
-  constructor(private productService: ProductService) {;
+  constructor(private productService: ProductService,private cartService:CartService) {;
   }
   ngOnInit(): void {
     this.loadProducts();
@@ -40,13 +41,19 @@ export class ProductComponent {
     });
   }
   addToCart(product: Product): void {
+    const productId = product.Id;
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
+      console.error('User not logged in');
+      return;
+    } 
     console.log('Adding to cart:', product);
-    // Implement your add to cart logic here
+    this.cartService.addToCart(userId, productId)
+      .subscribe({
+        next: res => console.log('Added to cart', res),
+        error: err => console.error(err)
+      });
   }
-  show() {
-
-  }
-  
   getImageSrc(imageData: string | null): string {
     if (imageData) {
       // If ImageData is base64 string

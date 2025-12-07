@@ -32,7 +32,7 @@ export class CategoryComponent {
 
   show() {
       this.categoryService.ShowCategory(this.title).subscribe((response: any) => {
-      this.categories = this.data;
+      this.categories = response;
     });
   }
 
@@ -47,7 +47,7 @@ export class CategoryComponent {
   viewCategory(category: Category): void {
     console.log('Viewing category:', category);
     // Navigate to products by category
-      ///this.router.navigate(['/Products', category.Name]);
+      // this.router.navigate(['/Products', category.Name]);
   }
 
 }
