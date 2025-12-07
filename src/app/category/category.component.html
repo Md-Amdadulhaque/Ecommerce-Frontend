@@ -1,7 +1,22 @@
-<div>
-<div *ngFor="let item of data" class="category-card">
-  <img src="{{item.ImageData}}" alt='{{item.Name}}' class="category-image" />
-  <p>{{ item.Description }}</p>
-  <br>
+<div class="category-container">
+  <div class="category-block" *ngFor="let category of categories">
+    <div class="category-front">
+      <img [src]="getImageSrc(category.imageData)" 
+           class="category-image" 
+           [alt]="category.name">
+      <p class="category-name">{{category.name}}</p>
+    </div>
+    <div class="category-details">
+      <p class="category-title">{{category.name}}</p>
+      <p class="description">{{category.description}}</p>
+      <div class="function">
+        <button (click)="viewCategory(category)">View Products</button>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- Loading state -->
+<div *ngIf="categories.length === 0" style="text-align: center; padding: 50px;">
+  <p>Loading categories...</p>
 </div>
