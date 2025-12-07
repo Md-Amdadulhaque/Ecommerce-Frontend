@@ -15,7 +15,6 @@ export class WebRequestProductService {
   getData(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}`);  // API endpoint to fetch data
   }
-
   postData(data:any){
     const productData = {
       Name: data.name,
@@ -27,6 +26,5 @@ export class WebRequestProductService {
           console.log('Data sent successfully:', response);
         });
     }
-   
 }
 

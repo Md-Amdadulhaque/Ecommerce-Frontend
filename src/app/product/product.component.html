@@ -1,7 +1,23 @@
-<div>
-  <div *ngFor="let item of data" class="product-card">
-    <img src={{item.ImageData}} alt='{{item.Name}}' class="product-image" />
-    <p>{{ item.Description }}</p>
+<div class="product-container">
+  <div class="product-block" *ngFor="let product of products">
+    <div class="product-front">
+      <img [src]="getImageSrc(product.ImageData)" 
+           class="product-image" 
+           [alt]="product.Name">
+      <p class="product-name">{{product.Name}}</p>
+    </div>
+    <div class="product-details">
+      <span class="category">{{product.Category}}</span>
+      <p class="price">${{product.Price | number:'1.2-2'}}</p>
+      <p class="description">{{product.Description}}</p>
+      <div class="function">
+       <button (click)="addToCart(product)">Add to Cart</button>
+      </div>
+    </div>
   </div>
-  </div>
-  
+</div>
+
+<!-- Loading state -->
+<div *ngIf="products.length === 0" style="text-align: center; padding: 50px;">
+  <p>Loading products...</p>
+</div>

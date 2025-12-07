@@ -7,6 +7,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { ChatBoxComponent } from './chat-box/chat-box.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { RegisterComponent } from './register/register.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -17,5 +18,6 @@ export const routes: Routes = [
     { path: "AddCategory", component: AddCategoryComponent },
     { path: "ChatBox", component: ChatBoxComponent },
     { path: "Login-page", component: LoginPageComponent },
+    {path: "Register", component: RegisterComponent},
     { path: "**", component: ErrorComponent }
 ];
