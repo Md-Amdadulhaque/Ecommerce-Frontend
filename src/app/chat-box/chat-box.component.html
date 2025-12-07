@@ -1,15 +1,15 @@
-<div class="ChatBoxComponent">
-    <div class="chatbox-title">
-        Chat Support
-    </div>
-    <div class="messages">
-        <div *ngFor="let msg of messages" [ngClass]="msg.sender">
-            {{ msg.text }}
-        </div>
-    </div>
+<div class="ChatBoxComponent" #chatBox (mousedown)="startDrag($event)">
+  <div class="chatbox-title">
+    Chat Bot
+    <button (click)="minimizeChat($event)">_</button>
+  </div>
 
-    <div class="input-area">
-        <input [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" placeholder="Type a message..." />
-        <button (click)="sendMessage()">Send</button>
-    </div>
+  <div class="messages" *ngIf="!minimized">
+    <div *ngFor="let msg of messages" [ngClass]="msg.sender">{{ msg.text }}</div>
+  </div>
+
+  <div class="input-area" *ngIf="!minimized">
+    <input [(ngModel)]="newMessage" (keydown.enter)="sendMessage()" placeholder="Type a message..." />
+    <button (click)="sendMessage()">Send</button>
+  </div>
 </div>

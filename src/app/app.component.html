@@ -1,5 +1,4 @@
 <div class="component-containerApp">
-
   <div class="nav-containerApp">
     <ul>
       <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="''">Home</a></li>
@@ -8,9 +7,10 @@
       <li routerLinkActive="active"><a [routerLink]="'AddProduct'">AddProduct</a></li>
       <li routerLinkActive="active"><a [routerLink]="'AddCategory'">AddCategory</a></li>
       <li routerLinkActive="active"><a [routerLink]="'ChatBox'">ChatBox</a></li>
+      <li routerLinkActive="active"><a [routerLink]="'Login-page'">Login</a></li>
       <li routerLinkActive="active"><a [routerLink]="'Error'">Contact</a></li>
     </ul>
   </div>
   <router-outlet></router-outlet>
-
+  <app-chat-box></app-chat-box>
 </div>
