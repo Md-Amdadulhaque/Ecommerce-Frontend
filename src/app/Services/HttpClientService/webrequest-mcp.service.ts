@@ -9,19 +9,17 @@ export class WebrequestMcpService {
 
   constructor(private http: HttpClient) { }
 
-  private apiUrl = 'https://localhost:7127/api/Chat';
+  private apiUrl = 'https://localhost:7127/api/chat/query';
   // CallMCP now returns an Observable<any>
   CallMCP(data: any): Observable<any> {
     return this.postData(data);
   }
   // postData returns the Observable directly, no internal subscription
   private postData(data: any): Observable<any> {
-    const chatRequest = {
-      Message : data.message,
-      Name: data.name,
-      Email : data.email
+    const chatRequest1 = {
+      UserQuery: data
     };
-    return this.http.post<any>(this.apiUrl, chatRequest);
+    return this.http.post<any>(this.apiUrl, chatRequest1);
   }
 }
 
