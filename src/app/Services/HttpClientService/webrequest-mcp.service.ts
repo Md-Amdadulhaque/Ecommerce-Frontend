@@ -17,7 +17,9 @@ export class WebrequestMcpService {
   // postData returns the Observable directly, no internal subscription
   private postData(data: any): Observable<any> {
     const chatRequest1 = {
-      UserQuery: data
+      UserQuery: data,
+      UserName: localStorage.getItem('userName'),
+      UserId: localStorage.getItem('userId')
     };
     return this.http.post<any>(this.apiUrl, chatRequest1);
   }
