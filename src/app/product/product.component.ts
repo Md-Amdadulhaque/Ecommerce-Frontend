@@ -56,12 +56,8 @@ export class ProductComponent {
   }
   getImageSrc(imageData: string | null): string {
     if (imageData) {
-      // If ImageData is base64 string
       return `data:image/jpeg;base64,${imageData}`;
     }
-    // Placeholder image if no image data
     return 'https://via.placeholder.com/80';
   }
-  
-
 }

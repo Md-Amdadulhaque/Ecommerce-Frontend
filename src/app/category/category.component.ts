@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { CategoryService } from '../Services/CategoryService/category.service';
 import { CommonModule } from '@angular/common';
-
+import { Router } from '@angular/router';
+import { response } from 'express';
+import { HttpClient } from '@angular/common/http';
 export interface Category{
    Name: string;
    Description: string;
@@ -28,7 +30,7 @@ export class CategoryComponent {
       this.categories = this.data;
      }
   }
-  constructor(private categoryService: CategoryService) {}
+  constructor(private categoryService: CategoryService,private router:Router,private http:HttpClient) {}
 
   show() {
       this.categoryService.ShowCategory(this.title).subscribe((response: any) => {
@@ -42,12 +44,12 @@ export class CategoryComponent {
     }
     return 'https://via.placeholder.com/80';
   }
-
-
   viewCategory(category: Category): void {
     console.log('Viewing category:', category);
-    // Navigate to products by category
-      // this.router.navigate(['/Products', category.Name]);
+    const url = `https://localhost:7166/api/Product/category/${category.Name}`;
+    this.http.get<any>(url).subscribe(response => { 
+    });
+    this.router.navigate(['/Product'], { state: { data: response } });
   }
 
 }
