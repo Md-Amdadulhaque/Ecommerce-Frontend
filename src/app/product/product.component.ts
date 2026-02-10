@@ -62,5 +62,6 @@ export class ProductComponent {
     // Placeholder image if no image data
     return 'https://via.placeholder.com/80';
   }
+  
 
 }

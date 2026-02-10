@@ -1,0 +1,8 @@
+<div *ngIf="user; else noUser" class="profile-card">
+  <h2>{{ user.name }}</h2>
+  <p>Email: {{ user.email }}</p>
+</div>
+
+<ng-template #noUser>
+  <p>User data not available.</p>
+</ng-template>
