@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CartService {
 
-  private apiUrl = 'https://localhost:7166/api/Cart'; // replace with your backend
+  private apiUrl = 'http://localhost:5149/api/Cart'; // replace with your backend
 
   constructor(private http: HttpClient) { }
 

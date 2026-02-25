@@ -9,7 +9,7 @@ export class WebrequestMcpService {
 
   constructor(private http: HttpClient) { }
 
-  private apiUrl = 'https://localhost:7127/api/chat/query';
+  private apiUrl = 'http://localhost:5149/api/chat/query';
   // CallMCP now returns an Observable<any>
   CallMCP(data: any): Observable<any> {
     return this.postData(data);

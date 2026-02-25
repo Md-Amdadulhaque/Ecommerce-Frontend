@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class LoginService {
 
-  private apiUrl = 'https://localhost:7166/api/User/Login'; // Replace with your backend login API URL
+  private apiUrl = 'http://localhost:5149/api/User/Login'; // Replace with your backend login API URL
 
   constructor(private http: HttpClient, private router: Router) { }
   login(credentials: { username: string; password: string }): Observable<any> {

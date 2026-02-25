@@ -30,15 +30,9 @@
     <option *ngFor="let cat of categoryList" [value]="cat.Name">
       {{ cat.Name }}
     </option> 
+
   </select>     
 </div>
-
-  <select name="Category" class="listofcat1" (change)="onCategoryChange($event)">
-    <option value="" disabled selected>Select Category</option>
-    <option *ngFor="let cat of categoryList" [value]="cat.Name">
-      {{ cat.Name }}
-    </option> 
-  </select>     
 
      <div>
       <label for="imagedata">ImageUrl:</label>

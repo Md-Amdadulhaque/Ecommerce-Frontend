@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class WebRequestProductService {
 
-  private apiUrl = 'https://localhost:7166/api/Product'; 
+  private apiUrl = 'http://localhost:5149/api/Product'; 
 
   constructor(private http: HttpClient,private router:Router) { }
 

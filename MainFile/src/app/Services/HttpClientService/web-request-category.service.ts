@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class WebRequestCategoryService {
-  private apiUrl = 'https://localhost:7166/api/Category'; 
+  private apiUrl = 'http://localhost:5149/api/Category'; 
   constructor(private http: HttpClient) { }
 
   getData(): Observable<any[]> {
