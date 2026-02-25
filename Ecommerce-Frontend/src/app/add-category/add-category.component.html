@@ -1,0 +1,32 @@
+<form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+    <!-- Name Field -->
+    <div>
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name" type="text">
+      <div *ngIf="categoryForm.get('name')?.invalid && categoryForm.get('name')?.touched">
+        Name is required and should be at least 3 characters long.
+      </div>
+    </div>
+  
+    <!-- Description Field -->
+    <div>
+      <label for="description">Description:</label>
+      <textarea id="description" formControlName="description"></textarea>
+      <div *ngIf="categoryForm.get('description')?.invalid && categoryForm.get('description')?.touched">
+        Description is required and should be at least 10 characters long.
+      </div>
+    </div>
+
+
+    <div>
+      <label for="imagedata">ImageUrl:</label>
+      <input id="imagedata" formControlName="imagedata" type="text">
+      <div *ngIf="categoryForm.get('imagedata')?.invalid && categoryForm.get('imagedata')?.touched"></div>
+    </div>
+  
+    <!-- Submit Button -->
+     <div>
+    <button type="submit" [disabled]="categoryForm.invalid">Submit</button>
+</div>
+</form>
+  
