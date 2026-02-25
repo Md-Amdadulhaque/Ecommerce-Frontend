@@ -1,0 +1,14 @@
+{
+  "routes": [
+    "/",
+    "/AddCategory",
+    "/AddProduct",
+    "/Cart",
+    "/Category",
+    "/ChatBox",
+    "/Home",
+    "/Login-page",
+    "/Product",
+    "/Register"
+  ]
+}

@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { CategoryService } from '../Services/CategoryService/category.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { response } from 'express';
 import { HttpClient } from '@angular/common/http';
+import { WebRequestProductService } from '../Services/HttpClientService/web-request-product.service';
 export interface Category{
    Name: string;
    Description: string;
@@ -30,7 +30,7 @@ export class CategoryComponent {
       this.categories = this.data;
      }
   }
-  constructor(private categoryService: CategoryService,private router:Router,private http:HttpClient) {}
+  constructor(private categoryService: CategoryService,private router:Router,private http:HttpClient,private productService:WebRequestProductService) {}
 
   show() {
       this.categoryService.ShowCategory(this.title).subscribe((response: any) => {
@@ -46,10 +46,6 @@ export class CategoryComponent {
   }
   viewCategory(category: Category): void {
     console.log('Viewing category:', category);
-    const url = `https://localhost:7166/api/Product/category/${category.Name}`;
-    this.http.get<any>(url).subscribe(response => { 
-    });
-    this.router.navigate(['/Product'], { state: { data: response } });
+    this.productService.fetchProductsByCategory(category.Name);
   }
-
 }

@@ -20,7 +20,7 @@ export class AddProductComponent {
     description: '',
     price: 0,
     imagedata: '',
-    categoryid: ''
+    categoryName: ''
   };
 
   ngOnInit() {
@@ -38,10 +38,18 @@ export class AddProductComponent {
       categoryName: ''
     });
   }
+  selectedCategoryName: string = '';
+
+onCategoryChange(event: Event) {
+  const selectElement = event.target as HTMLSelectElement;
+  this.selectedCategoryName = selectElement.value;
+  console.log('Selected Category Name:', this.selectedCategoryName);
+}
 
   onSubmit(): void {
     if (this.productForm.valid) {
       this.product = this.productForm.value;
+      this.product.categoryName = this.selectedCategoryName;
       this.serviceProduct.PostProduct(this.product);
       this.productForm.reset();
     }

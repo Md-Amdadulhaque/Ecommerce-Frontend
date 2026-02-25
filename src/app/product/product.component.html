@@ -21,3 +21,6 @@
 <div *ngIf="products.length === 0" style="text-align: center; padding: 50px;">
   <p>Loading products...</p>
 </div>
+
+<p *ngIf="successMessage" class="success">{{ successMessage }}</p>
+<p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>

@@ -23,27 +23,10 @@
       <input id="imagedata" formControlName="imagedata" type="text">
       <div *ngIf="categoryForm.get('imagedata')?.invalid && categoryForm.get('imagedata')?.touched"></div>
     </div>
-
-    <div class="control">
-      <label class="radio">ParentCategory
-        <br>
-        <input type="radio" name="answer" />
-        Yes
-      </label>
-      <label class="radio">
-        <input type="radio" name="answer" />
-        No
-      </label>
-    </div>
-  
   
     <!-- Submit Button -->
      <div>
-
     <button type="submit" [disabled]="categoryForm.invalid">Submit</button>
-
-   
 </div>
-     
-  </form>
+</form>
   
