@@ -68,6 +68,16 @@ export class ProductComponent {
         }
       });
       this.router.navigate(['/Cart']);
+        next: res => {
+          this.successMessage = 'Product added to cart!';
+        this.isAdding = false;
+        },
+        error: err => {
+          this.errorMessage = 'Failed to add product.';
+        this.isAdding = false;
+        }
+      });
+      this.router.navigate(['/Cart']);
   }
   getImageSrc(imageData: string | null): string {
     if (imageData) {

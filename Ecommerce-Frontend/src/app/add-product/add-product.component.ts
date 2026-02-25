@@ -40,7 +40,7 @@ export class AddProductComponent {
   }
   selectedCategoryName: string = '';
 
-onCategoryChange(event: Event) {
+  onCategoryChange(event: Event) {
   const selectElement = event.target as HTMLSelectElement;
   this.selectedCategoryName = selectElement.value;
   console.log('Selected Category Name:', this.selectedCategoryName);
@@ -49,6 +49,7 @@ onCategoryChange(event: Event) {
   onSubmit(): void {
     if (this.productForm.valid) {
       this.product = this.productForm.value;
+      this.product.categoryName = this.selectedCategoryName;
       this.product.categoryName = this.selectedCategoryName;
       this.serviceProduct.PostProduct(this.product);
       this.productForm.reset();

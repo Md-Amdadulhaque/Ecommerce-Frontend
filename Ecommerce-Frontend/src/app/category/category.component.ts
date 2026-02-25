@@ -47,5 +47,6 @@ export class CategoryComponent {
   viewCategory(category: Category): void {
     console.log('Viewing category:', category);
     this.productService.fetchProductsByCategory(category.Name);
+    this.productService.fetchProductsByCategory(category.Name);
   }
 }
