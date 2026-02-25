@@ -26,13 +26,12 @@ export class ProductComponent {
   data: any[] = [];
   products: Product[] = [];
   subscription: any;
-
-  constructor(private productService: ProductService, private cartService: CartService,
-    private router: Router, private mcpService: MCPServiceService) {
-
-  }
+  successMessage: string = '';
+  errorMessage: string = '';
+  imageData:string = '';
+  isAdding = true;
+  constructor(private productService: ProductService, private cartService: CartService,private router: Router, private mcpService: MCPServiceService) {}
   ngOnInit(): void {
-    // Subscribe to MCP service data
     this.subscription = this.mcpService.productData$.subscribe(data => {
       if (data && data.length > 0) {
         console.log('Received data from MCP service:', data);
@@ -60,7 +59,7 @@ export class ProductComponent {
       .subscribe({
         next: res => {
           this.successMessage = 'Product added to cart!';
-        this.isAdding = false;
+          this.isAdding = false;
         },
         error: err => {
           this.errorMessage = 'Failed to add product.';
@@ -68,17 +67,7 @@ export class ProductComponent {
         }
       });
       this.router.navigate(['/Cart']);
-        next: res => {
-          this.successMessage = 'Product added to cart!';
-        this.isAdding = false;
-        },
-        error: err => {
-          this.errorMessage = 'Failed to add product.';
-        this.isAdding = false;
-        }
-      });
-      this.router.navigate(['/Cart']);
-  }
+ }
   getImageSrc(imageData: string | null): string {
     if (imageData) {
       return `data:image/jpeg;base64,${imageData}`;
