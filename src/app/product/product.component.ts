@@ -3,9 +3,10 @@ import { ProductService } from '../Services/ProductService/product.service';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../Services/cart.service';
 import { Router } from '@angular/router';
+import { MCPServiceService } from '../Services/MCPService/mcp-service.service';
 
 export interface Product {
-  Id : string;
+  Id: string;
   Name: string;
   Description: string;
   Price: number;
@@ -24,21 +25,26 @@ export class ProductComponent {
   title = "Product";
   data: any[] = [];
   products: Product[] = [];
-  isAdding: boolean = false;
-  successMessage: string = '';
-  errorMessage: string = '';
-  constructor(private productService: ProductService,private cartService:CartService,private router:Router) {;
+  subscription: any;
+
+  constructor(private productService: ProductService, private cartService: CartService,
+    private router: Router, private mcpService: MCPServiceService) {
+
   }
   ngOnInit(): void {
-    if(this.data.length>0){
-      this.products = this.data;
-    }
-    else {
-      this.loadProducts();
-    }
+    // Subscribe to MCP service data
+    this.subscription = this.mcpService.productData$.subscribe(data => {
+      if (data && data.length > 0) {
+        console.log('Received data from MCP service:', data);
+        this.products = data;
+        this.data = data;
+      } else {
+        this.loadProducts();
+      }
+    });
   }
   loadProducts(): void {
-     this.productService.ShowProduct(this.title).subscribe((response: any) => {
+    this.productService.ShowProduct(this.title).subscribe((response: any) => {
       this.products = response
     });
   }
@@ -48,10 +54,7 @@ export class ProductComponent {
     if (!userId) {
       console.error('User not logged in');
       return;
-    } 
-    this.errorMessage = '';
-    this.successMessage = '';
-    this.isAdding = false;
+    }
     console.log('Adding to cart:', product);
     this.cartService.addToCart(userId, productId)
       .subscribe({

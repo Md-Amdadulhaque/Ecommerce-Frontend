@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { WebrequestMcpService } from '../HttpClientService/webrequest-mcp.service';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MCPServiceService {
+  private productDataSubject = new BehaviorSubject<any[]>([]);
+  public productData$ = this.productDataSubject.asObservable();
 
   constructor(
     private webRequstMcp: WebrequestMcpService,
@@ -26,8 +29,10 @@ export class MCPServiceService {
   private redirectController(response: any) {
     // Example logic based on response type
     //if (response.type === 'product') {
-      this.router.navigate(['/Product'], { state: { data: response } });
-   // } 
+    var value = response.result.result.result;
+    this.productDataSubject.next(value);
+    this.router.navigate(['/Product']);
+    // } 
     // else if (response.type === 'category') {
     //   this.router.navigate(['/Category'], { state: { data: response } });
     // } 
