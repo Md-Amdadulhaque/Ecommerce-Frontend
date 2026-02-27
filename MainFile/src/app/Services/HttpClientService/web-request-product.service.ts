@@ -29,17 +29,18 @@ export class WebRequestProductService {
     const url = `http://localhost:5149/api/Product/category/${categoryName}`;
     return this.http.get<any[]>(url);
   }
-  postData(data:any){
-    const productData = {
+  postData(data: any) {
+    // If data is FormData (for file upload), send as is
+    let body: any = data instanceof FormData ? data : {
       Name: data.name,
       Description: data.description,
       Price: data.price,
-      ImageData:data.imagedata,
-      Category:data.categoryName
+      Category: data.categoryName,
+      ImageData: data.imagedata
     };
-    this.http.post<any>(this.apiUrl,productData).subscribe(response => {
-          console.log('Data sent successfully:', response);
-        });
-    }
+    this.http.post<any>(this.apiUrl, body).subscribe(response => {
+      console.log('Data sent successfully:', response);
+    });
+  }
 }
 

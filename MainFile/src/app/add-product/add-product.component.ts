@@ -22,6 +22,8 @@ export class AddProductComponent {
     imagedata: '',
     categoryName: ''
   };
+  selectedFile: File | null = null;
+  imageError: boolean = false;
 
   ngOnInit() {
     this.categoryService.ShowCategory(this.title).subscribe((response: any) => {
@@ -34,7 +36,7 @@ export class AddProductComponent {
       name: ['', [Validators.required, Validators.minLength(3)]],
       description: ['', [Validators.required]],
       price: [[Validators.required, Validators.min(1)]],
-      imagedata: ['', [Validators.required]],
+      // Remove imagedata from form controls, handle file separately
       categoryName: ''
     });
   }
@@ -46,13 +48,30 @@ export class AddProductComponent {
   console.log('Selected Category Name:', this.selectedCategoryName);
 }
 
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
+      this.imageError = false;
+    } else {
+      this.selectedFile = null;
+      this.imageError = true;
+    }
+  }
+
   onSubmit(): void {
-    if (this.productForm.valid) {
-      this.product = this.productForm.value;
-      this.product.categoryName = this.selectedCategoryName;
-      this.product.categoryName = this.selectedCategoryName;
-      this.serviceProduct.PostProduct(this.product);
+    if (this.productForm.valid && this.selectedFile) {
+      const formData = new FormData();
+      formData.append('name', this.productForm.value.name);
+      formData.append('description', this.productForm.value.description);
+      formData.append('price', this.productForm.value.price);
+      formData.append('category', this.selectedCategoryName);
+      formData.append('image', this.selectedFile);
+      this.serviceProduct.PostProduct(formData);
       this.productForm.reset();
+      this.selectedFile = null;
+    } else if (!this.selectedFile) {
+      this.imageError = true;
     }
   }
 }
