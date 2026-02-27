@@ -26,7 +26,7 @@ export class WebRequestProductService {
     });
   }
   getDataByCategory(categoryName: string): Observable<any[]> {
-    const url = `https://localhost:7166/api/Product/category/${categoryName}`;
+    const url = `http://localhost:5149/api/Product/category/${categoryName}`;
     return this.http.get<any[]>(url);
   }
   postData(data:any){

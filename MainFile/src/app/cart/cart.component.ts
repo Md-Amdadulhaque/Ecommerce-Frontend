@@ -19,6 +19,7 @@ export interface catItem {
 })
 export class CartComponent implements OnInit {
 
+
   cartItems: catItem[] = [];
 
   constructor(private http: HttpClient) { }
@@ -27,11 +28,20 @@ export class CartComponent implements OnInit {
     this.loadCartItems();
   }
 
+  removeFromCart(item: catItem): void {
+    this.cartItems = this.cartItems.filter(i => i !== item);
+    // TODO: Optionally, send a request to backend to remove item from cart
+  }
+
+  getTotal(): number {
+    return this.cartItems.reduce((sum, item) => sum + (item.UnitPrice * item.Quantity), 0);
+  }
+
   loadCartItems(): void {
     const userId = localStorage.getItem('userId');
     if (!userId) return;
 
-    const url = 'https://localhost:7166/api/Cart/GetCart';
+    const url = 'http://localhost:5149/api/Cart/GetCart';
 
     const body = { Id: userId }; // create an object to send
     this.http.post<any[]>(url, body).subscribe({

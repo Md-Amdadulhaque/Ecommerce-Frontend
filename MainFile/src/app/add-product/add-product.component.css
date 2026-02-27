@@ -1,11 +1,91 @@
 /* Basic form container styling */
-form {
-  max-width: 400px;             /* Set a max-width for the form */
-  margin: 20px auto;            /* Center the form horizontally */
-  padding: 20px;                /* Add padding inside the form */
-  border: 1px solid #ccc;       /* Light gray border */
-  border-radius: 8px;           /* Rounded corners */
-  background-color: #f9f9f9;    /* Light background color */
+form.modern-form {
+  max-width: 420px;
+  margin: 32px auto;
+  padding: 32px 28px 24px 28px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 4px 24px rgba(118,75,162,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.form-title {
+  text-align: center;
+  color: #764ba2;
+  margin-bottom: 1.5rem;
+}
+.form-group {
+  position: relative;
+  margin-bottom: 1.2rem;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 14px 12px 14px 12px;
+  border: 1.5px solid #ccc;
+  border-radius: 7px;
+  font-size: 1rem;
+  background: #f4f8fb;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border: 1.5px solid #764ba2;
+  box-shadow: 0 2px 8px rgba(118,75,162,0.08);
+}
+.form-group label {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  background: transparent;
+  color: #888;
+  font-size: 1rem;
+  pointer-events: none;
+  transition: 0.2s;
+}
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:focus + label,
+.form-group textarea:not(:placeholder-shown) + label,
+.form-group select:focus + label,
+.form-group select:not([value=""]) + label {
+  top: -12px;
+  left: 10px;
+  background: #fff;
+  color: #764ba2;
+  font-size: 0.92rem;
+  padding: 0 4px;
+}
+.error-msg {
+  color: #ff4d4f;
+  font-size: 0.95rem;
+  margin-top: 4px;
+}
+.submit-btn {
+  padding: 12px 0;
+  background: #f1c40f;
+  color: #1f2a38;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.2s, color 0.2s;
+}
+.submit-btn:disabled {
+  background: #d3d3d3;
+  color: #888;
+  cursor: not-allowed;
+}
+.submit-btn:hover:not(:disabled) {
+  background: #fff;
+  color: #764ba2;
+  border: 1px solid #764ba2;
 }
 
 /* Styling for form fields */

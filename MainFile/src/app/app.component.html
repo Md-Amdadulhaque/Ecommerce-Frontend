@@ -1,17 +1,39 @@
 <div class="component-containerApp">
-  <div class="nav-containerApp">
-    <ul>
-      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="''">Home</a></li>
-      <li routerLinkActive="active"><a [routerLink]="'Category'">Categories</a></li>
-      <li routerLinkActive="active"><a [routerLink]="'Product'">Products</a></li>
-      <li routerLinkActive="active"><a [routerLink]="'AddProduct'">AddProduct</a></li>
-      <li routerLinkActive="active"><a [routerLink]="'AddCategory'">AddCategory</a></li>
-      <li routerLinkActive="active"><a [routerLink]="'Login-page'">Login</a></li>
-      <li routerLinkActive="active"><a [routerLink]="'Register'">Register</a></li>
-      <li routerLinkActive="active"><a [routerLink]="'Cart'">Cart</a></li>
-      <li routerLinkActive="active"><a [routerLink]="'Error'">Contact</a></li>
-    </ul>
-  </div>
-  <router-outlet></router-outlet>
-  <app-chat-box></app-chat-box>
+  <nav class="nav-containerApp" aria-label="Main Navigation">
+    <div class="nav-left">
+      <span class="logo" aria-label="ShopNow Home">
+        <a [routerLink]="''">🛒 ShopNow</a>
+      </span>
+      <ul class="nav-links">
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="''">Home</a></li>
+        <li routerLinkActive="active"><a [routerLink]="'Category'">Categories</a></li>
+        <li routerLinkActive="active"><a [routerLink]="'Product'">Products</a></li>
+        <li routerLinkActive="active"><a [routerLink]="'AddProduct'">Add Product</a></li>
+        <li routerLinkActive="active"><a [routerLink]="'AddCategory'">Add Category</a></li>
+        <li routerLinkActive="active"><a [routerLink]="'Error'">Contact</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <form class="search-bar" role="search" aria-label="Site Search">
+        <input type="search" placeholder="Search products..." aria-label="Search products">
+        <button type="submit" aria-label="Search">
+          <span>🔍</span>
+        </button>
+      </form>
+      <a [routerLink]="'Cart'" class="cart-icon" aria-label="View Cart">
+        🛒
+      </a>
+      <ng-container *ngIf="!isLoggedIn()">
+        <a [routerLink]="'Login-page'" class="login-btn">Login</a>
+        <a [routerLink]="'Register'" class="register-btn">Register</a>
+      </ng-container>
+      <div class="profile-top-right" *ngIf="isLoggedIn()">
+        <app-profile></app-profile>
+      </div>
+    </div>
+  </nav>
+  <main class="main-content">
+    <router-outlet></router-outlet>
+    <app-chat-box></app-chat-box>
+  </main>
 </div>

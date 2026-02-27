@@ -1,7 +1,17 @@
 <div class="cart-container">
+  <h2>Your Cart</h2>
+  <div *ngIf="cartItems.length === 0" class="empty-cart">Your cart is empty.</div>
   <div class="cart-item" *ngFor="let item of cartItems">
-    <div>{{ item.ProductName }}</div>
-    <div>Qty: {{ item.Quantity }}</div>
-    <div>Price: {{ item.UnitPrice }}</div>
+    <img *ngIf="item.ImageUrl" [src]="item.ImageUrl" class="item-image" alt="{{ item.ProductName }}" />
+    <div class="item-details">
+      <div class="item-name">{{ item.ProductName }}</div>
+      <div class="item-qty">Qty: {{ item.Quantity }}</div>
+      <div class="item-price">Price: ${{ item.UnitPrice }}</div>
+    </div>
+    <button class="remove-btn" (click)="removeFromCart(item)">Remove</button>
+  </div>
+  <div class="cart-summary" *ngIf="cartItems.length > 0">
+    <div>Total: ${{ getTotal() }}</div>
+    <button class="checkout-btn">Checkout</button>
   </div>
 </div>

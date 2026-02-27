@@ -1,33 +1,26 @@
-<form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
-    <!-- Name Field -->
-    <div>
-      <label for="name">Name:</label>
-      <input id="name" formControlName="name" type="text">
-      <div *ngIf="categoryForm.get('name')?.invalid && categoryForm.get('name')?.touched">
-        Name is required and should be at least 3 characters long.
-      </div>
+<form [formGroup]="categoryForm" (ngSubmit)="onSubmit()" class="modern-form">
+  <h2 class="form-title">Add New Category</h2>
+  <div class="form-group">
+    <input id="name" formControlName="name" type="text" placeholder=" " />
+    <label for="name">Name</label>
+    <div class="error-msg" *ngIf="categoryForm.get('name')?.invalid && categoryForm.get('name')?.touched">
+      Name is required and should be at least 3 characters long.
     </div>
-  
-    <!-- Description Field -->
-    <div>
-      <label for="description">Description:</label>
-      <textarea id="description" formControlName="description"></textarea>
-      <div *ngIf="categoryForm.get('description')?.invalid && categoryForm.get('description')?.touched">
-        Description is required and should be at least 10 characters long.
-      </div>
+  </div>
+  <div class="form-group">
+    <textarea id="description" formControlName="description" placeholder=" "></textarea>
+    <label for="description">Description</label>
+    <div class="error-msg" *ngIf="categoryForm.get('description')?.invalid && categoryForm.get('description')?.touched">
+      Description is required and should be at least 10 characters long.
     </div>
-
-
-    <div>
-      <label for="imagedata">ImageUrl:</label>
-      <input id="imagedata" formControlName="imagedata" type="text">
-      <div *ngIf="categoryForm.get('imagedata')?.invalid && categoryForm.get('imagedata')?.touched"></div>
+  </div>
+  <div class="form-group">
+    <input id="imagedata" formControlName="imagedata" type="text" placeholder=" " />
+    <label for="imagedata">Image URL</label>
+    <div class="error-msg" *ngIf="categoryForm.get('imagedata')?.invalid && categoryForm.get('imagedata')?.touched">
+      Image URL is required.
     </div>
-  
-  
-    <!-- Submit Button -->
-     <div>
-    <button type="submit" [disabled]="categoryForm.invalid">Submit</button>
-</div>
+  </div>
+  <button type="submit" [disabled]="categoryForm.invalid" class="submit-btn">Add Category</button>
 </form>
   

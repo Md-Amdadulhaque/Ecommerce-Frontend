@@ -19,14 +19,19 @@ export class ProfileComponent {
     const userId = localStorage.getItem('userId');
     if (userId) {
     console.log('Fetching profile for userId:', userId);
-    const url = `https://localhost:7166/api/User/GetUserById?userId=${userId}`;
+    if(userId === 'undefined') {
+      console.error('Invalid userId:', userId);
+      this.router.navigate(['/Login-page']);
+      return;
+    }
+      const url = `http://localhost:5149/api/User/GetUserById?userId=${userId}`;
     this.http.get<any>(url).subscribe(user1 => {
-    this.user = {
-    id: user1.Id,
-    name: user1.UserName,  
-    email: user1.Email    
-  };
-  console.log('User data:', this.user.name, this.user.email);
+      this.user = {
+        id: user1.Id,
+        name: user1.UserName,
+        email: user1.Email
+      };
+      console.log('User data:', this.user.name, this.user.email);
     });
   }
   else {

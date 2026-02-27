@@ -18,7 +18,7 @@ export class RegisterComponent {
   password = '';
   confirmPassword = '';
 
-  private apiUrl = 'https://localhost:7166/api/User/RegisterUser';
+  private apiUrl = 'http://localhost:5149/api/User/RegisterUser';
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -35,7 +35,7 @@ export class RegisterComponent {
       role : 'User'
     };
 
-   this.http.post('https://localhost:7166/api/User/RegisterUser', userData)
+  this.http.post('http://localhost:5149/api/User/RegisterUser', userData)
   .subscribe({
     next: res => {
         this.router.navigate(['/Login-page']);

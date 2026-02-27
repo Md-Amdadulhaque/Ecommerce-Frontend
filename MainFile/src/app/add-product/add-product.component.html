@@ -1,48 +1,44 @@
-<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
-    <!-- Name Field -->
-    <div>
-      <label for="name">Name:</label>
-      <input id="name" formControlName="name" type="text">
-      <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched">
-        Name is required and should be at least 3 characters long.
-      </div>
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="modern-form">
+  <h2 class="form-title">Add New Product</h2>
+  <div class="form-group">
+    <input id="name" formControlName="name" type="text" placeholder=" " />
+    <label for="name">Name</label>
+    <div class="error-msg" *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched">
+      Name is required and should be at least 3 characters long.
     </div>
-    <!-- Description Field -->
-    <div>
-      <label for="description">Description:</label>
-      <textarea id="description" formControlName="description"></textarea>
-      <div *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched">
-      </div>
+  </div>
+  <div class="form-group">
+    <textarea id="description" formControlName="description" placeholder=" "></textarea>
+    <label for="description">Description</label>
+    <div class="error-msg" *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched">
+      Description is required.
     </div>
-  
-    <!-- Price Field -->
-    <div>
-      <label for="price">Price:</label>
-      <input id="price" formControlName="price" type="number" step="1">
-      <div *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched">
-        Price is required and should be a positive number.
-      </div>
+  </div>
+  <div class="form-group">
+    <input id="price" formControlName="price" type="number" step="1" placeholder=" " />
+    <label for="price">Price</label>
+    <div class="error-msg" *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched">
+      Price is required and should be a positive number.
     </div>
-
-    <div class="listofcat">
-  <select name="Category" class="listofcat1" (change)="onCategoryChange($event)">
-    <option value="" disabled selected>Select Category</option>
-    <option *ngFor="let cat of categoryList" [value]="cat.Name">
-      {{ cat.Name }}
-    </option> 
-
-  </select>     
-</div>
-
-     <div>
-      <label for="imagedata">ImageUrl:</label>
-      <input id="imagedata" formControlName="imagedata" type="text">
-      <div *ngIf="productForm.get('imagedata')?.invalid && productForm.get('imagedata')?.touched">
-      </div>
+  </div>
+  <div class="form-group">
+    <select name="Category" class="listofcat1" (change)="onCategoryChange($event)">
+      <option value="" disabled selected>Select Category</option>
+      <option *ngFor="let cat of categoryList" [value]="cat.Name">
+        {{ cat.Name }}
+      </option>
+    </select>
+    <label>Category</label>
+  </div>
+  <div class="form-group">
+    <input id="imagedata" formControlName="imagedata" type="text" placeholder=" " />
+    <label for="imagedata">Image URL</label>
+    <div class="error-msg" *ngIf="productForm.get('imagedata')?.invalid && productForm.get('imagedata')?.touched">
+      Image URL is required.
     </div>
+  </div>
+  <button type="submit" [disabled]="productForm.invalid" class="submit-btn">Add Product</button>
+</form>
     <!-- Submit Button -->
-    <button type="submit" [disabled]="productForm.invalid">Submit</button>
-  </form>
-  
 
-  
+    <button type="submit" [disabled]="productForm.invalid">Submit</button>
