@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CartService } from '../Services/cart.service';
 import { Router } from '@angular/router';
 import { MCPServiceService } from '../Services/MCPService/mcp-service.service';
-
+import { ImagePathPipe } from '../image-path.pipe';
 export interface Product {
   Id: string;
   Name: string;
@@ -17,7 +17,7 @@ export interface Product {
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ImagePathPipe],
   templateUrl: './product.component.html',
   styleUrl: './product.component.css',
 })
@@ -30,7 +30,10 @@ export class ProductComponent {
   errorMessage: string = '';
   imageData:string = '';
   isAdding = true;
-  constructor(private productService: ProductService, private cartService: CartService,private router: Router, private mcpService: MCPServiceService) {}
+  constructor(private productService: ProductService, 
+    private cartService: CartService,
+    private router: Router, private mcpService: MCPServiceService
+   ,private imagePathPipe: ImagePathPipe) {}
   ngOnInit(): void {
     this.subscription = this.mcpService.productData$.subscribe(data => {
       if (data && data.length > 0) {

@@ -1,6 +1,6 @@
 <div class="product-container">
   <div class="product-card" *ngFor="let product of products">
-    <img [src]="getImageSrc(product.ImageData)" class="product-image" [alt]="product.Name">
+    <img [src]="product.ImageData | imagePath" class="product-image" [alt]="product.Name">
     <div class="product-info">
       <div class="product-header">
         <span class="product-name">{{product.Name}}</span>
