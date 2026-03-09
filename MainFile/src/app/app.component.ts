@@ -2,10 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLinkActive, RouterModule, RouterOutlet, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { ChatBoxComponent } from './chat-box/chat-box.component';
 import { ProfileComponent } from './profile/profile.component';
-//import { NgOptimizedImage } from '@angular/common'
 
 @Component({
   selector: 'app-root',

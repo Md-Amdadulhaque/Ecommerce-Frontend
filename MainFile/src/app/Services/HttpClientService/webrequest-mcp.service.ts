@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import { API } from '../../../environments/environment.development';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,7 +9,7 @@ export class WebrequestMcpService {
 
   constructor(private http: HttpClient) { }
 
-  private apiUrl = 'http://localhost:5149/api/chat/query';
+  private apiUrl = API.CHAT;
   // CallMCP now returns an Observable<any>
   CallMCP(data: any): Observable<any> {
     return this.postData(data);

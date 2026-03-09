@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-
+import {API} from '../../../environments/environment.development';
 @Injectable({
   providedIn: 'root'
 })
 export class WebRequestProductService {
 
-  private apiUrl = 'http://localhost:5149/api/Product'; 
+  private apiUrl = API.PRODUCT; 
 
   constructor(private http: HttpClient,private router:Router) { }
 
@@ -26,7 +26,7 @@ export class WebRequestProductService {
     });
   }
   getDataByCategory(categoryName: string): Observable<any[]> {
-    const url = `http://localhost:5149/api/Product/category/${categoryName}`;
+    const url = API.PRODUCT + `/category/${categoryName}`;
     return this.http.get<any[]>(url);
   }
   postData(data: any) {
@@ -35,7 +35,7 @@ export class WebRequestProductService {
       Name: data.name,
       Description: data.description,
       Price: data.price,
-      Category: data.categoryName,
+      Category: data.category,
       ImageData: data.imagedata
     };
     this.http.post<any>(this.apiUrl, body).subscribe(response => {

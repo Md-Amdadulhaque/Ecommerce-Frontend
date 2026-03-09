@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { API} from '../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WebRequestCategoryService {
-  private apiUrl = 'http://localhost:5149/api/Category'; 
+  private apiUrl = API.CATEGORY; 
   constructor(private http: HttpClient) { }
 
   getData(): Observable<any[]> {

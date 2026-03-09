@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-
+import {API} from '../../environments/environment.development';
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  private apiUrl = 'http://localhost:5149/api/User/Login'; // Replace with your backend login API URL
-
+  private apiUrl = API.LOGIN;
   constructor(private http: HttpClient, private router: Router) { }
   login(credentials: { username: string; password: string }): Observable<any> {
     return this.http.post(this.apiUrl, credentials);

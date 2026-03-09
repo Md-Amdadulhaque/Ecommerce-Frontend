@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User } from '../Models/User.model';
 import { CommonModule } from '@angular/common'; 
+import { API } from '../../environments/environment.development';
 @Component({
   selector: 'app-profile',
   standalone: true,
@@ -24,7 +25,7 @@ export class ProfileComponent {
       this.router.navigate(['/Login-page']);
       return;
     }
-      const url = `http://localhost:5149/api/User/GetUserById?userId=${userId}`;
+    const url = API.USER + `/GetUserById?userId=${userId}`;
     this.http.get<any>(url).subscribe(user1 => {
       this.user = {
         id: user1.Id,

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-
+import { API } from '../../environments/environment.development';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -18,7 +18,7 @@ export class RegisterComponent {
   password = '';
   confirmPassword = '';
 
-  private apiUrl = 'http://localhost:5149/api/User/RegisterUser';
+  private apiUrl = API.REGISTER;
 
   constructor(private http: HttpClient, private router: Router) {}
 
