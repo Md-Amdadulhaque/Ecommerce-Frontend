@@ -20,6 +20,8 @@ export class LoginService {
           localStorage.setItem('authToken', response.token);
           localStorage.setItem('userId', response.userId);
           localStorage.setItem('userName', credentials.username);
+          localStorage.setItem('roles', response.roles);
+          console.log('Login successful, token stored:', response.token);
           this.router.navigate(['/Home']);
         } else {
           console.warn('Login failed: invalid credentials');

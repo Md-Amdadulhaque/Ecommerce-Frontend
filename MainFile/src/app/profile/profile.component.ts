@@ -25,15 +25,13 @@ export class ProfileComponent {
       this.router.navigate(['/Login-page']);
       return;
     }
-    const url = API.USER + `/GetUserById?userId=${userId}`;
-    this.http.get<any>(url).subscribe(user1 => {
-      this.user = {
-        id: user1.Id,
-        name: user1.UserName,
-        email: user1.Email
+    this.user = {
+        id: localStorage.getItem('userId') || '',
+        name: localStorage.getItem('userName') || '',
+        email: localStorage.getItem('userEmail') || '',
+        roles: localStorage.getItem('roles')|| ''
       };
-      console.log('User data:', this.user.name, this.user.email);
-    });
+      console.log('User data:', this.user.name, this.user.email, this.user.roles);
   }
   else {
     this.router.navigate(['/Login-page']);

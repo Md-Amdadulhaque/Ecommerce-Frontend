@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators, FormsModule, ReactiveFormsModule } 
 import { ProductService } from '../Services/ProductService/product.service';
 import { CommonModule, NgFor } from '@angular/common';
 import { CategoryService } from '../Services/CategoryService/category.service';
-import { normalize } from 'node:path';
 @Component({
   selector: 'app-add-product',
   standalone: true,
